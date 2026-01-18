@@ -1,0 +1,57 @@
+---
+layout: page
+---
+
+{%- comment -%}
+CUSTOM: theses index layout (inherits from al-folio "page")
+{%- endcomment -%}
+
+<div class="post">
+  <article>
+
+    {%- assign theses_sorted = site.theses | sort: "order" -%}
+
+    {%- if theses_sorted == nil or theses_sorted.size == 0 -%}
+      <p>No theses found. Add markdown files to <code>_theses/</code> and enable the collection in <code>_config.yml</code>.</p>
+    {%- endif -%}
+
+    {%- for t in theses_sorted -%}
+      <hr>
+
+      {%- assign align = t.align | default: "right" -%}
+      <div class="profile float-{% if align == 'left' %}left{% else %}right{% endif %}">
+
+        {%- if t.image -%}
+          {%- assign profile_image_path = t.image | prepend: 'assets/img/' -%}
+
+          {%- if t.image_circular -%}
+            {%- assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' -%}
+          {%- else -%}
+            {%- assign profile_image_class = 'img-fluid z-depth-1 rounded' -%}
+          {%- endif -%}
+
+          {%- capture sizes -%}
+            (min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3 }}px,
+            (min-width: 576px) 30vw,
+            95vw
+          {%- endcapture -%}
+
+          {% include figure.liquid path=profile_image_path class=profile_image_class sizes=sizes alt=t.image loading="lazy" %}
+        {%- endif -%}
+
+        {%- if t.more_info -%}
+          <div class="more-info">{{ t.more_info }}</div>
+        {%- endif -%}
+      </div>
+
+      <div class="clearfix">
+        {%- if t.title -%}<h2>{{ t.title }}</h2>{%- endif -%}
+        {%- if t.student -%}<p><strong>Student:</strong> {{ t.student }}</p>{%- endif -%}
+        {%- if t.status -%}<p><strong>Status:</strong> {{ t.status }}</p>{%- endif -%}
+
+        {{ t.content }}
+      </div>
+    {%- endfor -%}
+
+  </article>
+</div>

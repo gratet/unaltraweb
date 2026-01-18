@@ -1,0 +1,81 @@
+{%- comment -%}
+CUSTOM: Team grid (Bootstrap cards), fed by _data/team.yml
+{%- endcomment -%}
+
+<div class="team-grid row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+  {%- for member in site.data.team -%}
+    {%- assign pic = member.pic | default: 'user-placeholder.png' -%}
+    {%- assign img_path = 'assets/img/team/' | append: pic -%}
+    {%- assign full_name = member.name | append: ' ' | append: member.lastname -%}
+
+    <div class="col">
+      <div class="card hoverable">
+        <div class="card-body text-center">
+
+          {%
+            include figure.liquid
+            path=img_path
+            alt=full_name
+            class="rounded-circle team-photo"
+            loading="lazy"
+            sizes="160px"
+          %}
+
+          <h5 class="card-title mt-3 mb-1">{{ full_name }}</h5>
+
+          {%- if member.position -%}
+            <div class="team-position">{{ member.position }}</div>
+          {%- endif -%}
+
+          {%- if member.organization -%}
+            <div class="team-org mt-2"><strong>{{ member.organization }}</strong></div>
+          {%- endif -%}
+
+          {%- if member.department -%}
+            <div class="team-dept"><em>{{ member.department }}</em></div>
+          {%- endif -%}
+
+          {%- comment -%}
+          {%- if member.keywords -%}
+            <div class="team-keywords mt-3">
+              <span class="team-keywords-label">Keywords:</span>
+              {%- for keyword in member.keywords -%}
+                <code class="team-keyword">{{ keyword | strip }}</code>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+          {%- endcomment -%}
+
+
+          {%- assign has_email = member.email and member.email.size > 0 -%}
+          {%- assign has_social = member.social and member.social.size > 0 -%}
+
+          {%- if has_email or has_social -%}
+            <ul class="team-icons mt-3">
+              {%- if has_email -%}
+                {%- for item in member.email -%}
+                  <li>
+                    <a href="mailto:{{ item.url }}" title="{{ item.title }}" aria-label="{{ item.title }}">
+                      <i class="{{ item.class }}"></i>
+                    </a>
+                  </li>
+                {%- endfor -%}
+              {%- endif -%}
+
+              {%- if has_social -%}
+                {%- for item in member.social -%}
+                  <li>
+                    <a href="{{ item.url }}" target="_blank" rel="noopener" title="{{ item.title }}" aria-label="{{ item.title }}">
+                      <i class="{{ item.class }}"></i>
+                    </a>
+                  </li>
+                {%- endfor -%}
+              {%- endif -%}
+            </ul>
+          {%- endif -%}
+
+        </div>
+      </div>
+    </div>
+  {%- endfor -%}
+</div>

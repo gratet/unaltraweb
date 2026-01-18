@@ -2,33 +2,39 @@
 layout: about
 title: About
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: "Write your project subtitle here (plain text)."
 
-profile:
-  align: right
-  image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
-
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+selected_papers: true
+social: true
 
 announcements:
-  enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
+  enabled: true
+  scrollable: true
+  limit: 5
 
 latest_posts:
   enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
+  scrollable: true
+  limit: 3
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+This website is built from a lightweight, reusable template designed to help our research group publish consistent project pages with minimal setup effort. It is based on the **al-folio** Jekyll theme (open-source), which provides a clean academic layout, built-in support for news items, publications, project pages, and blog posts. ([GitHub][1])
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+In this template, each project site can keep the same overall structure (navigation, styling, and core sections) while only replacing the project-specific content (summary, highlights, links, people, and outputs). The goal is to make it easy to spin up a new project website, keep it updated over time, and maintain a consistent look across all the group’s projects.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+If you are browsing this site as a project page, start with the summary above and then check the rest of the sections:
+
+* **News** for updates, milestones, events, and releases.
+* **Selected papers / publications** for peer-reviewed outputs and technical reports.
+* **Blog posts** for short notes, tutorials, methods, and behind-the-scenes work.
+* **Repositories** for code, workflows, and reproducible materials.
+
+Original resources:
+
+* al-folio GitHub repository: [https://github.com/alshedivat/al-folio](https://github.com/alshedivat/al-folio) ([GitHub][1])
+* al-folio live demo: [https://alshedivat.github.io/al-folio/](https://alshedivat.github.io/al-folio/) ([Alshedivat][2])
+
+---
+
+[1]: https://github.com/alshedivat/al-folio "alshedivat/al-folio: A beautiful, simple, clean ..."
+[2]: https://alshedivat.github.io/al-folio/ "You R. Name"

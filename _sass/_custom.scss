@@ -1,0 +1,269 @@
+/* CUSTOM: all local overrides live here */
+
+/* =============================================================================
+   Custom configuration
+   -----------------------------------------------------------------------------
+   Keep all your site-specific CSS changes in this file so they are easy to
+   locate, review, and port to other instances of the template.
+   ============================================================================= */
+
+/* === Configurable tokens ===================================================== */
+:root {
+    /* Primary link color in light mode */
+    --custom-link-color: #1a73e8;
+  
+    /* Link hover color in light mode */
+    --custom-link-hover-color: #135cbc;
+  
+    /* Accent color used by UI elements (navbar active item, badges, etc.) */
+    --custom-accent-color: var(--custom-link-color);
+    --custom-accent-hover-color: var(--custom-link-hover-color);
+  
+    /* Inline code styling in light mode (this removes the light purple highlight) */
+    --custom-inline-code-bg: rgba(26, 115, 232, 0.10);
+    --custom-inline-code-text: inherit;
+    --custom-inline-code-border: rgba(26, 115, 232, 0.25);
+  
+    /* Text selection styling in light mode (optional) */
+    --custom-selection-bg: rgba(26, 115, 232, 0.25);
+    --custom-selection-text: inherit;
+  }
+  
+  /* =============================================================================
+     Light mode accent overrides (al-folio theme variables)
+     -----------------------------------------------------------------------------
+     In al-folio, many UI elements (navbar active item, badges, highlights,
+     some icons, etc.) use theme variables instead of inheriting from "a {}".
+     This block updates the accent variables ONLY in light mode.
+     ============================================================================= */
+  
+  html:not([data-theme="dark"]) {
+    /* Global theme accent used across the UI */
+    --global-theme-color: var(--custom-accent-color);
+  
+    /* Global hover color used across the UI */
+    --global-hover-color: var(--custom-accent-hover-color);
+  
+    /* Inline code variables used by the theme (names may vary by version, but
+       setting these is usually enough to remove the purple background) */
+    --global-code-bg-color: var(--custom-inline-code-bg);
+    --global-code-text-color: var(--custom-inline-code-text);
+    --global-code-border-color: var(--custom-inline-code-border);
+  }
+  
+  /* =============================================================================
+     Light mode link overrides
+     -----------------------------------------------------------------------------
+     Force link colors ONLY in light mode. Dark mode keeps the theme defaults.
+     ============================================================================= */
+  
+  html:not([data-theme="dark"]) a,
+  html:not([data-theme="dark"]) table.table a {
+    color: var(--custom-link-color);
+  }
+  
+  html:not([data-theme="dark"]) a:hover,
+  html:not([data-theme="dark"]) table.table a:hover {
+    color: var(--custom-link-hover-color);
+    text-decoration: underline;
+  }
+  
+  /* =============================================================================
+     Navbar overrides (light mode)
+     -----------------------------------------------------------------------------
+     Some navbar items can be styled with more specific selectors in the theme.
+     These rules ensure consistent behavior:
+     - Default navbar links use the standard text color
+     - Hover uses the global hover color
+     - Active item uses the global theme color
+     ============================================================================= */
+  
+  html:not([data-theme="dark"]) .navbar a,
+  html:not([data-theme="dark"]) .navbar .nav-link,
+  html:not([data-theme="dark"]) .navbar .dropdown-item {
+    color: var(--global-text-color);
+  }
+  
+  html:not([data-theme="dark"]) .navbar a:hover,
+  html:not([data-theme="dark"]) .navbar .nav-link:hover,
+  html:not([data-theme="dark"]) .navbar .dropdown-item:hover {
+    color: var(--global-hover-color);
+  }
+  
+  /* Active nav item (current page) */
+  html:not([data-theme="dark"]) .navbar .nav-link.active,
+  html:not([data-theme="dark"]) .navbar .nav-item.active > .nav-link {
+    color: var(--global-theme-color);
+  }
+  
+  /* =============================================================================
+     Inline code overrides (light mode)
+     -----------------------------------------------------------------------------
+     The light purple highlight is the inline <code> styling.
+     These selectors force a consistent inline code background in light mode.
+     ============================================================================= */
+  
+  html:not([data-theme="dark"]) code {
+    background: var(--custom-inline-code-bg);
+    /* border: 1px solid var(--custom-inline-code-border); */
+    color: var(--custom-inline-code-text);
+  }
+  
+  /* Avoid affecting fenced code blocks in light mode */
+  html:not([data-theme="dark"]) pre code {
+    background: inherit;
+    border: none;
+  }
+  
+  /* =============================================================================
+     Text selection overrides (light mode)
+     -----------------------------------------------------------------------------
+     Optional: highlight color when selecting text with the mouse.
+     ============================================================================= */
+  
+  html:not([data-theme="dark"]) ::selection {
+    background: var(--custom-selection-bg);
+    color: var(--custom-selection-text);
+  }
+  
+  /* =============================================================================
+     Notes
+     -----------------------------------------------------------------------------
+     If any remaining purple highlight persists, it may be coming from a more
+     specific class (e.g., .highlight, .kbd, .search-keyword, etc.). In that case,
+     add a targeted rule here, always prefixed with:
+       html:not([data-theme="dark"]) ...
+     so dark mode remains untouched.
+     ============================================================================= */
+  
+  /* =============================================================================
+     Team grid
+     ============================================================================= */
+  
+  /* CUSTOM: team grid images */
+  .team-photo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  
+  html[data-theme="dark"] .team-photo {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+  
+  /* CUSTOM: team social icons */
+  .team-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    gap: 14px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .team-icons li {
+    display: inline-flex;
+  }
+  
+  /* =============================================================================
+     Team card typography and spacing
+     ============================================================================= */
+  
+  /* CUSTOM: team card typography */
+  .team-grid .card-body {
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+  
+  .team-grid .card-title {
+    font-size: 1.05rem;
+    line-height: 1.25;
+  }
+  
+  .team-grid .team-position,
+  .team-grid .team-org,
+  .team-grid .team-dept {
+    font-size: 0.95rem;
+  }
+  
+  /* CUSTOM: team card vertical spacing */
+  .team-grid .card-body {
+    padding-top: 1.25rem;
+    padding-bottom: 2rem;
+  }
+  
+  .team-grid .card-title {
+    margin-top: 0.9rem;
+    margin-bottom: 0.35rem;
+  }
+  
+  .team-grid .team-position {
+    margin-bottom: 0.7rem;
+  }
+  
+  .team-grid .team-org {
+    margin-top: 0.2rem;
+    margin-bottom: 0.15rem;
+  }
+  
+  .team-grid .team-dept {
+    margin-top: 0.15rem;
+    margin-bottom: 0.9rem;
+  }
+  
+  .team-grid .team-icons {
+    margin-top: 0.9rem;
+  }
+  
+  /* =============================================================================
+     Optional: keywords styling (currently unused)
+     -----------------------------------------------------------------------------
+     Keep these rules in case you re-enable keywords later.
+     ============================================================================= */
+  
+  .team-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .team-keywords-label {
+    margin-right: 6px;
+    opacity: 0.8;
+  }
+  
+  .team-keyword {
+    padding: 0.15rem 0.35rem;
+    border-radius: 6px;
+  }
+  
+  /* CUSTOM: team grid spacing and hover stacking */
+
+/* More space between rows/columns (independent of Bootstrap gutters) */
+.team-grid .col {
+    margin-bottom: 1.25rem;
+  }
+  
+  /* Make hover shadow appear above neighboring cards */
+  .team-grid .card {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .team-grid .card.hoverable:hover {
+    z-index: 10;
+  }
+  
+  /* If any container clips shadows, force visible overflow */
+  .team-grid {
+    overflow: visible;
+  }
+  
+  .team-grid .col {
+    overflow: visible;
+  }
+  
