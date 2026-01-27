@@ -11,11 +11,6 @@ announcements:
   enabled: true
   scrollable: true
   limit: 5
-
-latest_posts:
-  enabled: true
-  scrollable: true
-  limit: 3
 ---
 
 This website is built from a lightweight, reusable template designed to help our research group publish consistent project pages with minimal setup effort. It is based on the **al-folio** Jekyll theme (open-source), which provides a clean academic layout, built-in support for news items, publications, project pages, and blog posts. ([GitHub][1])
